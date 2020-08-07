@@ -31,7 +31,7 @@ ALLOWED_HOSTS = ['youtubecloneaman.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'whitetube',
+    'whitetube.apps.WhitetubeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
