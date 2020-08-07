@@ -24,10 +24,10 @@ TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 SECRET_KEY = '%&c&61rg3p6op4(q336nmwn1!@2ul=$ybj!)pytay)46sl#du&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+#DEBUG = True
+DEBUG= False
+#ALLOWED_HOSTS = ['localhost']
+ALLOWED_HOSTS = ['youtubecloneaman.herokuapp.com']
 
 # Application definition
 
