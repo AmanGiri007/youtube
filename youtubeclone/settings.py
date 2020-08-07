@@ -23,8 +23,8 @@ TEMPLATES_DIR=os.path.join(BASE_DIR,'templates')
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY= os.environ.get('DJANGO_SECRET_KEY','%&c&61rg3p6op4(q336nmwn1!@2ul=$ybj!)pytay)46sl#du&')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG= False
+#DEBUG = True
+DEBUG= False
 #ALLOWED_HOSTS = ['localhost']
 ALLOWED_HOSTS = ['youtubecloneaman.herokuapp.com']
 
