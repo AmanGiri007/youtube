@@ -1,0 +1,24 @@
+{% extends 'whitetube/base.html' %}
+{% block body %}
+    <title>Videos</title>
+    <h2>{{video.title}}</h2>
+    <video width="320" height="240" controls>
+        <source src="{{video.path}}" type="video/mp4">
+        Your browser doesnot support the video tag.
+    </video>
+    <p>{{video.description}}</p>
+    <br><br>
+    <h3>Comments</h3>
+    {% if form %}
+        <form action="{% url 'whitetube:comment' %}" method="post">
+            {% csrf_token %}
+            {{form}}
+            <input type="hidden" name="video" value='{{video.id}}'>
+            <br>
+            <button type="submit" class="btn btn-primary">Post Comment</button>
+        </form>
+    {% endif %}
+    {% for comment in comments %}
+        <p>{{comment.user}} commented on {{comment.datetime}}<br>{{comment.text}}</p>
+    {% endfor %}
+{% endblock body %}

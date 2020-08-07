@@ -1,0 +1,13 @@
+{% extends 'whitetube/base.html' %}
+{% block body %}
+    <title>Login</title>
+    <h3>Sign In</h3>
+    <form action="{% url 'whitetube:login' %}" method="post">
+    {% csrf_token %}
+        <h5>Name:</h5>
+        {{form.username}}<br><br>
+        <h5>Password:</h5>
+        {{form.password}}
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+{% endblock body %}

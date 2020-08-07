@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+    {% load static %}
+  <head>
+    <link rel="icon" href="https://cdn1.iconfinder.com/data/icons/logotypes/32/youtube-512.png" type="image/icon type">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'whitetube/css/base.css' %}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+        <div class="d-flex" id="wrapper">
+        <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <!--div class="sidebar-heading"></div-->
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'whitetube:home' %}" class="list-group-item list-group-item-action bg-light">
+                        <img src="https://icon-library.net/images/icon-home/icon-home-7.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="20" alt="">
+                        Home</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">
+                        <img src="https://cdn1.iconfinder.com/data/icons/youtube-23/31/Subtract-14-512.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="20" alt="">
+                        Trending</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">
+                        <img src="https://cdn.icon-icons.com/icons2/2248/PNG/512/youtube_subscription_icon_136007.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="20" alt="">
+                    Subscriptions</a>
+                    <a href="{% url 'whitetube:create' %}" class="list-group-item list-group-item-action bg-light">
+                        <img src="https://freesvg.org/img/Folder-1.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="20" alt="">
+                    Create Channel</a>
+                    <a href="#" class="list-group-item list-group-item-action bg-light">
+                        <img src="https://cdn1.iconfinder.com/data/icons/youtube-23/29/Vector-9-512.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="20" alt="">
+                    History</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'whitetube:channel' user=channel.user %}" class="list-group-item list-group-item-action bg-light">
+                            <img src="https://image.flaticon.com/icons/png/512/16/16904.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="30" alt="">
+                        Your Videos</a>
+                        <a href="{% url 'whitetube:new_video'%}" class="list-group-item list-group-item-action bg-light">
+                            <img src="https://image.flaticon.com/icons/png/512/16/16904.png" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" width="20" height="30" alt="">
+                        Upload</a>
+                    {% endif %}
+                </div>
+            </div>
+            <div id="page-content-wrapper">
+                <nav class="navbar navbar-light bg-white">
+                    <button class="btn btn-light" id="menu-toggle">
+                        <svg width="1em" height="2em" viewBox="0 0 16 16" class="bi bi-border-width" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 3.5A.5.5 0 0 1 .5 3h15a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-2zm0 5A.5.5 0 0 1 .5 8h15a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H.5a.5.5 0 0 1-.5-.5v-1zm0 4a.5.5 0 0 1 .5-.5h15a.5.5 0 0 1 0 1H.5a.5.5 0 0 1-.5-.5z"/>
+                        </svg>
+                    </button>
+                    <a class="navbar-brand" href="{% url 'whitetube:home' %}">
+                        <img src="https://i.gadgets360cdn.com/large/youtube_logo_new_official_1504077880072.jpg?output-quality=80&output-format=webp" width="100" height="50" class="d-inline-block align-top" alt="" loading="lazy">
+                    </a>
+                    <form class="form-inline mx-auto">
+                        <input class="form-control mr-sm-0" type="search" placeholder="Search" aria-label="Search" size="80">
+                        <button class="btn btn-outline-dark mr-sm-0 bg-light">
+                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                                <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                            </svg>
+                        </button>
+                    </form>
+                </nav>
+                {% block body %}
+                {% endblock body %}
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+
+  </body>
+</html>

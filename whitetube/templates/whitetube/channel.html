@@ -1,0 +1,28 @@
+{% extends 'whitetube/base.html' %}
+{% block body %}
+    <title>Your Channel</title>
+    <div class="channelview">
+        <h2>Welcome to {{channel.channel_name}}</h2>
+        <h3>Author:{{channel.user}}</h3>
+    </div>
+    <div class="video_area">
+        <div class="ad_area">
+            {% for video in videos %}
+                <div class="video_advertisement col-md-6">
+                    <div class="video_title">
+                        <h4 align="center" style="font-family:Courier New"><span class="badge badge-pill badge-primary">{{video.title}}</span></h4>
+                    </div>
+                    <center>
+                        <div class="video_description">
+                            <h5>{{video.description}}</h5>
+                            <h6 align="left,bottom" style="position:relative,float:bottom,margin-bottom:0px">Uploadedby {{video.user}} on {{video.datetime}}.</h6>
+                        </div>
+                        <div class="watch_now">
+                            <a href="/video/{{video.id}}"><button class="btn btn-info">Watch now!</button></a>
+                        </div>
+                    </center>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock body %}

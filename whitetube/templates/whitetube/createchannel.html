@@ -1,0 +1,10 @@
+{% extends 'whitetube/base.html' %}
+{% block body %}
+    <title>Create Your Channel</title>
+    <h3>Create</h3>
+    <form action="{% url 'whitetube:create' %}" method="post">
+    {% csrf_token %}
+        {{form.channel_name|linebreaks}}
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+{% endblock body %}

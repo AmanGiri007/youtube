@@ -1,0 +1,46 @@
+{% extends 'whitetube/base.html' %}
+{% block body %}
+    <title>YouTube</title>
+    <div class="video_area">
+        <div class="ad_area">
+            <h2><span class="badge badge-secondary">Recent Uploads</span></h2>
+            {% for videos in most_recent_videos %}
+                <div class="video_advertisement col-md-6">
+                    <div class="video_title">
+                        <h3 align="center" style="font-family:Courier New">{{video.title}}</h3>
+                    </div>
+                    <div class="video_description">
+                        <h4 align="left">{{video.description}}</h4>
+                        <h6 align="left,bottom" style="position:relative;float:bottom;margin-bottom:0px"><span class="badge badge-pill badge-warning">Uploaded by {{videos.user}} on {{videos.datetime}}</span></h6>
+                    </div>
+                    <div class="watch_now">
+                        <a href="/video/{{videos.id}}"><button type="button" class="btn btn-info">Watch Now!</button></a><br><br>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="video_areas" id="channels">
+        <div class="ad_area">
+            <h2><span class="badge badge-secondary">Channels</span></h2>
+            <div class="channel_area">
+                {% for channels in most_recent_channels %}
+                    {% if user.is_authenticated %}
+                        <div>
+                            <center><p><a href="{% url 'whitetube:channel' user=channel.user %}"><h3>{{channels.channel_name}}</h3></a></p></center>
+                            <br><br>
+                            <div class="alert alert-danger" role="alert">
+                                <h6><a href="{% url 'whitetube:logout' %}">Logout</a></h6>
+                            </div>
+                        </div>
+                    {% else %}
+                        <h6>You're not login.</h6>
+                        <div class="alert alert-success" role="alert">
+                            <h6><a href="{% url 'whitetube:login' %}">Login</a></h6>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock body %}
